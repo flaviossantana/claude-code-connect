@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# NestJS
+/dist
+/node_modules
+/package-lock.json
