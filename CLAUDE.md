@@ -88,6 +88,20 @@ Every component must have a test file (`*.spec.ts` or `*.test.ts`) covering its 
 
 ## Backend Guidelines
 
+### Security
+- Never expose sensitive data in logs (tokens, passwords, PII)
+- Validate input on all routes
+- Use DTO + class-validator for validation in NestJS
+
+### Performance
+- Avoid N+1 queries — use eager loading or DataLoader
+- Pagination is mandatory on list endpoints
+- Apply cache where applicable (e.g. Redis, HTTP cache headers)
+
+### Architecture
+- Separate domain / application / infrastructure layers
+- Keep controllers thin — no business logic in controllers
+
 ### REST Principles
 All API endpoints must be adherent to REST:
 
