@@ -1,9 +1,13 @@
-export function BannerColumn(): HTMLDivElement {
+export type BannerColumnProps = {
+  imageSrc?: string
+}
+
+export function BannerColumn(props?: BannerColumnProps): HTMLDivElement {
   const wrapper = document.createElement('div')
   wrapper.className = 'relative w-full h-full overflow-hidden'
 
   const img = document.createElement('img')
-  img.src = '/banner-login.png'
+  img.src = props?.imageSrc ?? '/banner-login.png'
   img.alt = 'Code Connect banner'
   img.className = 'w-full h-full object-cover object-center'
 

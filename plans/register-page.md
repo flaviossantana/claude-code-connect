@@ -15,9 +15,10 @@ A tela de login ja esta implementada seguindo Atomic Design. O `AuthForm` ja pos
 | `atoms/*` (Button, Input, Label, Checkbox, Link, Divider, SocialButton) | Sim | Nenhum |
 | `molecules/*` (FormField, RememberForgotRow, SocialLoginGroup) | Sim | Nenhum |
 | `organisms/auth-form.ts` | Sim | Alterar hrefs para hash routing (`#/login`, `#/register`) |
-| `organisms/banner-column.ts` | Sim | Adicionar prop opcional `imageSrc` |
+| `organisms/banner-column.ts` | Sim | ✅ Prop `imageSrc` ja adicionada |
 | `templates/auth-template.ts` | Sim | Nenhum |
-| `pages/login-page.ts` | Sim | Nenhum (pode passar `imageSrc` explicitamente por clareza) |
+| `pages/login-page.ts` | Sim | Nenhum (usa fallback `banner-login.png`) |
+| `pages/register-page.ts` | Novo | Passar `imageSrc: '/banner-cadastro.png'` ao BannerColumn |
 
 **Nenhum atomo, molecula ou organismo novo sera criado.**
 
@@ -27,6 +28,7 @@ A tela de login ja esta implementada seguindo Atomic Design. O `AuthForm` ja pos
 
 | Aspecto | Login | Cadastro |
 |---------|-------|----------|
+| Banner | `banner-login.png` | `banner-cadastro.png` |
 | Heading | "Login" | "Cadastro" |
 | Subtitle | "Boas-vindas! Faca seu login." | "Ola! Preencha seus dados." |
 | Campos | Email/usuario, Senha | Nome, Email, Senha |
@@ -49,10 +51,10 @@ Todas essas diferencas **ja estao configuradas** no objeto `configs` dentro de `
 
 ## 4. Ajustes nos Componentes Existentes
 
-### 4.1 `organisms/banner-column.ts`
-- Adicionar tipo `BannerColumnProps` com `imageSrc?: string`
-- Alterar assinatura para `BannerColumn(props?: BannerColumnProps)`
-- Usar `props?.imageSrc ?? '/banner-login.png'` no `img.src`
+### 4.1 `organisms/banner-column.ts` ✅ (ja implementado)
+- Tipo `BannerColumnProps` com `imageSrc?: string` ja existe
+- Assinatura `BannerColumn(props?: BannerColumnProps)` ja existe
+- Fallback `props?.imageSrc ?? '/banner-login.png'` ja funciona
 - Mudanca retrocompativel — chamadas sem argumento continuam funcionando
 
 ### 4.2 `organisms/auth-form.ts`
@@ -108,11 +110,12 @@ web/src/
 
 ### Fase 2: Register Page
 1. Criar `web/src/components/pages/register-page.ts`
-2. Composicao: `AuthTemplate({ bannerSlot: BannerColumn(), formSlot: AuthForm({ variant: 'register' }) })`
+2. Composicao: `AuthTemplate({ bannerSlot: BannerColumn({ imageSrc: '/banner-cadastro.png' }), formSlot: AuthForm({ variant: 'register' }) })`
+3. Cada tela usa sua propria imagem de banner: login usa `banner-login.png`, cadastro usa `banner-cadastro.png`
 
-### Fase 3: Ajustar BannerColumn
-1. Adicionar `BannerColumnProps` com `imageSrc?: string`
-2. Usar prop com fallback para `/banner-login.png`
+### Fase 3: Ajustar BannerColumn ✅ (ja implementado)
+1. `BannerColumnProps` com `imageSrc?: string` ja existe
+2. Fallback para `/banner-login.png` ja funciona
 
 ### Fase 4: Atualizar Links do AuthForm
 1. Alterar `bottomLinkHref` de ambas configs para usar prefixo `#`
@@ -131,9 +134,10 @@ web/src/
 ## Verificacao
 
 1. `pnpm web:dev` — servidor inicia sem erros
-2. Acessar `http://localhost:5173/#/login` — exibe tela de login
-3. Clicar "Crie seu cadastro!" — navega para `#/register`, exibe tela de cadastro com 3 campos
-4. Clicar "Faca seu login!" — volta para `#/login`
+2. Acessar `http://localhost:5173/#/login` — exibe tela de login com `banner-login.png`
+3. Clicar "Crie seu cadastro!" — navega para `#/register`, exibe tela de cadastro com 3 campos e `banner-cadastro.png`
+4. Verificar que as imagens de banner sao distintas entre login e cadastro
+5. Clicar "Faca seu login!" — volta para `#/login`
 5. Botao voltar/avancar do navegador funciona corretamente
 6. Responsividade: em telas < lg, banner oculto e form ocupa 100%
 7. `pnpm web:build` — build de producao sem erros

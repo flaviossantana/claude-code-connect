@@ -51,7 +51,7 @@ const configs: Record<AuthFormVariant, AuthFormConfig> = {
     submitText: 'Login →',
     bottomText: 'Ainda não tem conta?',
     bottomLinkText: 'Crie seu cadastro! 📋',
-    bottomLinkHref: '/register',
+    bottomLinkHref: '#/register',
   },
   register: {
     heading: 'Cadastro',
@@ -83,7 +83,7 @@ const configs: Record<AuthFormVariant, AuthFormConfig> = {
     submitText: 'Cadastrar →',
     bottomText: 'Já tem conta?',
     bottomLinkText: 'Faça seu login! →',
-    bottomLinkHref: '/login',
+    bottomLinkHref: '#/login',
   },
 }
 
