@@ -29,3 +29,4 @@ Thumbs.db
 
 # pnpm
 .pnpm-store/
+/.claude/launch.json
