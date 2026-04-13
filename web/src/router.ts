@@ -4,7 +4,7 @@ export type RouteConfig = {
   container: HTMLElement
 }
 
-export function createRouter(config: RouteConfig): void {
+export function createRouter(config: RouteConfig): () => void {
   function getHash(): string {
     return window.location.hash.slice(1) || config.defaultPath
   }
@@ -24,4 +24,6 @@ export function createRouter(config: RouteConfig): void {
 
   window.addEventListener('hashchange', render)
   render()
+
+  return () => window.removeEventListener('hashchange', render)
 }
