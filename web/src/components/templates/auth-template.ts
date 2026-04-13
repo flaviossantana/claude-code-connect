@@ -22,11 +22,11 @@ export function AuthTemplate(props: AuthTemplateProps): HTMLElement {
 
   // Centered card
   const card = document.createElement('div')
-  card.className = 'relative z-10 flex w-full max-w-[660px] rounded-2xl overflow-hidden shadow-2xl'
+  card.className = 'relative z-10 flex w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl'
 
   // Left column — banner (hidden on mobile, visible on lg+)
   const leftColumn = document.createElement('div')
-  leftColumn.className = 'hidden lg:block lg:w-[280px] shrink-0'
+  leftColumn.className = 'hidden lg:block lg:w-72 shrink-0'
   leftColumn.appendChild(props.bannerSlot)
 
   // Right column — form
