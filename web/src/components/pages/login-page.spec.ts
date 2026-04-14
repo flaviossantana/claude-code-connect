@@ -1,28 +1,28 @@
 import { describe, it, expect } from 'vitest'
 import { axe } from 'vitest-axe'
-import { RegisterPage } from './register-page'
+import { LoginPage } from './login-page'
 
-describe('RegisterPage', () => {
+describe('LoginPage', () => {
   it('renders without errors', () => {
-    const page = RegisterPage()
+    const page = LoginPage()
     expect(page).toBeInstanceOf(HTMLElement)
   })
 
-  it('contains the heading "Cadastro"', () => {
-    const page = RegisterPage()
+  it('contains the heading "Login"', () => {
+    const page = LoginPage()
     const heading = page.querySelector('h1')
-    expect(heading?.textContent).toBe('Cadastro')
+    expect(heading?.textContent).toBe('Login')
   })
 
-  it('contains 3 form fields', () => {
-    const page = RegisterPage()
+  it('contains 2 form fields', () => {
+    const page = LoginPage()
     const inputs = page.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]')
-    expect(inputs).toHaveLength(3)
+    expect(inputs).toHaveLength(2)
   })
 
   describe('acessibilidade (WCAG 2 AA)', () => {
     it('não deve ter violações de acessibilidade', async () => {
-      const page = RegisterPage()
+      const page = LoginPage()
       document.body.appendChild(page)
 
       const results = await axe(document.body, {

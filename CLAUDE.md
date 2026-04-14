@@ -80,6 +80,29 @@ Organize components following Atomic Design:
 - Avoid arbitrary values (`w-[123px]`) — prefer design tokens from the Tailwind config
 - Extract repeated class combinations into components, not CSS files
 
+#### Color palette
+All colors are defined as `@theme` tokens in `web/src/style.css`. Never use raw hex values — always use the token name:
+
+| Token | Tailwind class | Usage |
+|---|---|---|
+| `--color-verde-destaque` | `verde-destaque` | Primary accent / highlights |
+| `--color-verde-pastel` | `verde-pastel` | Soft accent / hover states |
+| `--color-verde-petroleo` | `verde-petroleo` | Dark green backgrounds |
+| `--color-grafite` | `grafite` | Page background (darkest) |
+| `--color-cinza-escuro` | `cinza-escuro` | Card / surface background |
+| `--color-cinza` | `cinza` | Borders, dividers |
+| `--color-cinza-medio` | `cinza-medio` | Placeholder / secondary text |
+| `--color-cinza-claro` | `cinza-claro` | Muted text |
+| `--color-offwhite` | `offwhite` | Subtle light elements |
+| `--color-branco` | `branco` | Primary text / white |
+
+Use tokens as prefixes: `bg-grafite`, `text-branco`, `border-cinza`, etc.  
+In plain CSS (outside Tailwind utilities), reference the variable: `var(--color-grafite)`.
+
+#### Typography
+- Font family: use `font-prompt` (maps to `"Prompt", sans-serif` via `--font-prompt`)
+- Font sizes: use Tailwind's built-in scale (`text-sm`, `text-base`, `text-lg`, `text-xl`, `text-4xl`, …) — avoid arbitrary sizes like `text-[14px]`
+
 ### Component Tests
 Every component must have a test file (`*.spec.ts` or `*.test.ts`) covering its **essential behavior**:
 - Renders without errors
