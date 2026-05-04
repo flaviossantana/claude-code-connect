@@ -4,7 +4,7 @@ import { AuthForm } from '../organisms/auth-form.ts'
 
 export function RegisterPage(): HTMLElement {
   return AuthTemplate({
-    bannerSlot: BannerColumn({ imageSrc: '/banner-cadastro.png' }),
+    bannerSlot: BannerColumn({ imageSrc: '/banner-cadastro.webp' }),
     formSlot: AuthForm({ variant: 'register' }),
   })
 }

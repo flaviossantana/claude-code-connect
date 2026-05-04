@@ -10,13 +10,13 @@ export function AuthTemplate(props: AuthTemplateProps): HTMLElement {
 
   // Background watermark — top-left
   const bgLogoTopLeft = document.createElement('img')
-  bgLogoTopLeft.src = '/logo-cc-cinza.png'
+  bgLogoTopLeft.src = '/logo-cc-cinza.webp'
   bgLogoTopLeft.alt = ''
   bgLogoTopLeft.className = 'absolute -top-16 -left-16 w-80 opacity-20 pointer-events-none select-none'
 
   // Background watermark — bottom-right
   const bgLogoBottomRight = document.createElement('img')
-  bgLogoBottomRight.src = '/logo-cc-cinza.png'
+  bgLogoBottomRight.src = '/logo-cc-cinza.webp'
   bgLogoBottomRight.alt = ''
   bgLogoBottomRight.className = 'absolute -bottom-16 -right-16 w-80 opacity-20 pointer-events-none select-none'
 

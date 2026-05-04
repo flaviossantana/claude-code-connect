@@ -7,7 +7,7 @@ export function BannerColumn(props?: BannerColumnProps): HTMLDivElement {
   wrapper.className = 'relative w-full h-full overflow-hidden'
 
   const img = document.createElement('img')
-  img.src = props?.imageSrc ?? '/banner-login.png'
+  img.src = props?.imageSrc ?? '/banner-login.webp'
   img.alt = 'Code Connect banner'
   img.className = 'w-full h-full object-cover object-center'
 
